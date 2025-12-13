@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string_view>
 #include <vector>
-#include "error.hpp"
-#include "scanner.hpp"
+#include "error.h"
+#include "scanner.h"
 
 std::string read_file(std::string_view path) {
     std::ifstream file{path.data(), std::ios::in | std::ios::binary | std::ios::ate};

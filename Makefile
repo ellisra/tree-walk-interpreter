@@ -5,7 +5,7 @@ BUILD_DIR := build
 
 COMPILE   := $(CXX) $(CXXFLAGS) $(CPPFLAGS)
 
-SRCS      := src/lox/lox.cpp
+SRCS      := $(wildcard src/lox/*.cpp)
 OBJS      := $(patsubst src/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 DEPS      := $(OBJS:.o=.d)
 
@@ -30,11 +30,11 @@ clean:
 test-lexing:
 	@make lox >/dev/null
 	@echo "testing lox with test-lexing.lox ..."
-	@./lox tests/01-test-lexing.lox | diff -u --color tests/01-test-lexing.lox.expected -;
+	@./lox test/01-test-lexing.lox | diff -u --color test/01-test-lexing.lox.expected -;
 
 
 .PHONY: test-lexing2
 test-lexing2:
 	@make lox >/dev/null
 	@echo "testing lox with test-lexing2.lox ..."
-	@./lox tests/02-test-lexing.lox | diff -u --color tests/02-test-lexing.lox.expected -;
+	@./lox test/02-test-lexing.lox | diff -u --color test/02-test-lexing.lox.expected -;
