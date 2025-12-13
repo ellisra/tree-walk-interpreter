@@ -6,7 +6,7 @@ BUILD_DIR := build
 COMPILE   := $(CXX) $(CXXFLAGS) $(CPPFLAGS)
 
 SRCS      := src/lox/lox.cpp
-OBJS      := $(patsubset src/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+OBJS      := $(patsubst src/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 DEPS      := $(OBJS:.cpp=.d)
 
 
