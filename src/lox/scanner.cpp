@@ -68,7 +68,6 @@ void Scanner::scan_token() {
 
         case '/':
             if (match('/')) {
-                // Check if is a comment
                 while (peek() != '\n' && !is_at_end()) advance();
             } else {
                 add_token(SLASH);

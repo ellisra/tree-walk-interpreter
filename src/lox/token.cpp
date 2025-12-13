@@ -2,7 +2,7 @@
 #include <string>
 #include <utility>
 
-#include "token.hpp"
+#include "token.h"
 
 Token::Token(TokenType type, std::string lexme, std::any literal, int line)
     : type{type}, lexme{std::move(lexme)}, literal{std::move(literal)}, line{line} {}
