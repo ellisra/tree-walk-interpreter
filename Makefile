@@ -7,7 +7,7 @@ COMPILE   := $(CXX) $(CXXFLAGS) $(CPPFLAGS)
 
 SRCS      := src/lox/lox.cpp
 OBJS      := $(patsubst src/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
-DEPS      := $(OBJS:.cpp=.d)
+DEPS      := $(OBJS:.o=.d)
 
 
 lox: $(OBJS)
