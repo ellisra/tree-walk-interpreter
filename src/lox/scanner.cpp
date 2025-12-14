@@ -53,6 +53,10 @@ void Scanner::scan_token() {
         case ';': add_token(SEMICOLON); break;
         case '*': add_token(STAR); break;
 
+        case '\'':
+        case '"':
+            string(); break;
+
         case '!':
             add_token(match('=') ? BANG_EQUAL : BANG);
             break;
@@ -69,6 +73,13 @@ void Scanner::scan_token() {
         case '/':
             if (match('/')) {
                 while (peek() != '\n' && !is_at_end()) advance();
+            } else if (match('*')) {
+                while (peek() != '*' && peek_next() != '/' && !is_at_end()) {
+                    if (peek() == '\n') ++line;
+                    advance();
+                }
+                advance();
+                advance();
             } else {
                 add_token(SLASH);
             }
@@ -83,8 +94,6 @@ void Scanner::scan_token() {
         case '\n':
             ++line;
             break;
-
-        case '"': string(); break;
 
         default:
             if (is_digit(c)) {
@@ -124,7 +133,7 @@ void Scanner::number() {
 }
 
 void Scanner::string() {
-    while (peek() != '"' && !is_at_end()) {
+    while (peek() != '"' && peek() != '\'' && !is_at_end()) {
         if (peek() == '\n') ++line;
         advance();
     }
