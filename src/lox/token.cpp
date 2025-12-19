@@ -4,15 +4,15 @@
 
 #include "token.h"
 
-Token::Token(TokenType type, std::string lexme, std::any literal, int line)
-    : type{type}, lexme{std::move(lexme)}, literal{std::move(literal)}, line{line} {}
+Token::Token(TokenType type, std::string lexeme, std::any literal, int line)
+    : type{type}, lexeme{std::move(lexeme)}, literal{std::move(literal)}, line{line} {}
 
 std::string Token::to_string() const {
     std::string literal_text;
 
     switch (type) {
         case (IDENTIFIER):
-            literal_text = lexme;
+            literal_text = lexeme;
             break;
         case (STRING):
             literal_text = std::any_cast<std::string>(literal);
@@ -30,5 +30,5 @@ std::string Token::to_string() const {
             literal_text = "nil";
     }
 
-    return ::to_string(type) + " " + lexme + " " + literal_text;
+    return ::to_string(type) + " " + lexeme + " " + literal_text;
 }

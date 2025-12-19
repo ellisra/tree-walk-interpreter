@@ -8,11 +8,11 @@
 class Token {
 public:
     const TokenType type;
-    const std::string lexme;
+    const std::string lexeme;
     const std::any literal;
     const int line;
 
-    Token(TokenType type, std::string lexme, std::any literal, int line);
+    Token(TokenType type, std::string lexeme, std::any literal, int line);
 
     std::string to_string() const;
 };
