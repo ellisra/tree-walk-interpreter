@@ -1,11 +1,11 @@
 CXX       := clang++
-CXXFLAGS  := -ggdb -std=c++23 -Isrc/lox
+CXXFLAGS  := -ggdb -std=c++23 -Isrc
 CPPFLAGS  := -MMD
 BUILD_DIR := build
 
 COMPILE   := $(CXX) $(CXXFLAGS) $(CPPFLAGS)
 
-SRCS      := $(wildcard src/lox/*.cpp)
+SRCS      := $(wildcard src/*.cpp)
 OBJS      := $(patsubst src/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 DEPS      := $(OBJS:.o=.d)
 
